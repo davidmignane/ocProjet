@@ -1,0 +1,58 @@
+<template>
+            <div class="slds-grid slds-wrap slds-is-relative">
+            <div if:false={cardLoaded} class="slds-is-absolute vloc-loader_override" style="height: 100%; width: 100%; min-height:50px; background: white; z-index: 99;">
+  <div>
+   <vlocity_ins-spinner
+      variant="brand"
+      alternative-text="Loading content..."
+      size="medium"
+      theme="slds"
+      ></vlocity_ins-spinner>
+  </div>
+</div>
+            <template if:false={hasPermission}>
+              You don't have required permissions to view this card.
+            </template>
+            <template if:true={hasPermission}>
+              <template if:true={hasRecords}>
+                        <template for:each={_records} for:item="record" for:index="rindex">
+                            <vlocity_ins-flex-card-state key={record.uniqueKey} data-recordid={record.Id} record={record} data-statue="true"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-p-around_x-small slds-m-bottom_x-small" style="">
+          <div class="slds-col   slds-size_12-of-12 " style=""><vlocity_ins-output-field     card={card}  record={record}  merge-field="%3Cdiv%3EDate%20dernier%20Evt:%20%7BLastDateEvt%7D%20Etat%20dernier%20Evt:&nbsp;%20%7B%3Cspan%20style=%22font-family:%20Calibri;%20font-size:%2011pt;%20background-color:%20initial;%22%3ELastEvtState%7D%20Restant%20&agrave;%20payer:%20%7BRemainingToPay%7D%20Date%20comptable:%20%7BAccountingDate%3Cspan%20style=%22background-color:%20initial;%20font-size:%200.8125rem;%22%3E%7D%20Num&eacute;ro%20de%20Quittance%20OGI:%20%7BQuittanceNumber%7D%3C/span%3E%3C/span%3E%3C/div%3E"  theme="slds"  ></vlocity_ins-output-field>
+      </div><div class="slds-col   slds-p-around_x-small slds-size_12-of-12 " style="">
+    <vlocity_ins-block  card={card}  record={record}  label="Quittance"  collapsible="true"  collapsed-by-default="false"  theme="slds" ><div class="slds-grid slds-wrap">
+          <div class="slds-col   slds-size_12-of-12 " style=""><c-cf-vsp-child-transaction-statements  tracking-obj={_childCardTrackingObj}   card-node="\{record.Transaction}"  records={_records}  parent-record={record}  record-id={recordId}  is-child-card-tracking-enabled="false"  theme="slds"  onupdateparent={updateParentData}></c-cf-vsp-child-transaction-statements>
+    </div>
+        </div></vlocity_ins-block>
+    </div>
+        </div>
+      </vlocity_ins-flex-card-state>
+                        </template>
+                      </template>
+                      <template if:false={hasRecords}>
+                            <vlocity_ins-flex-card-state  record={record} data-statue="false"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-p-around_x-small slds-m-bottom_x-small" style="">
+          <div class="slds-col   slds-size_12-of-12 " style=""><vlocity_ins-output-field     card={card}  record={record}  merge-field="%3Cdiv%3EDate%20dernier%20Evt:%20%7BLastDateEvt%7D%20Etat%20dernier%20Evt:&nbsp;%20%7B%3Cspan%20style=%22font-family:%20Calibri;%20font-size:%2011pt;%20background-color:%20initial;%22%3ELastEvtState%7D%20Restant%20&agrave;%20payer:%20%7BRemainingToPay%7D%20Date%20comptable:%20%7BAccountingDate%3Cspan%20style=%22background-color:%20initial;%20font-size:%200.8125rem;%22%3E%7D%20Num&eacute;ro%20de%20Quittance%20OGI:%20%7BQuittanceNumber%7D%3C/span%3E%3C/span%3E%3C/div%3E"  theme="slds"  ></vlocity_ins-output-field>
+      </div><div class="slds-col   slds-p-around_x-small slds-size_12-of-12 " style="">
+    <vlocity_ins-block  card={card}  record={record}  label="Quittance"  collapsible="true"  collapsed-by-default="false"  theme="slds" ><div class="slds-grid slds-wrap">
+          <div class="slds-col   slds-size_12-of-12 " style=""><c-cf-vsp-child-transaction-statements  tracking-obj={_childCardTrackingObj}   card-node="\{record.Transaction}"  records={_records}  parent-record={record}  record-id={recordId}  is-child-card-tracking-enabled="false"  theme="slds"  onupdateparent={updateParentData}></c-cf-vsp-child-transaction-statements>
+    </div>
+        </div></vlocity_ins-block>
+    </div>
+        </div>
+      </vlocity_ins-flex-card-state>
+                      </template>
+            </template>
+            <template if:true={hasError}>
+            {error}
+            </template>
+            
+      <vlocity_ins-action action-wrapperclass="slds-hide" re-render-flyout class="action-trigger slds-col" onupdateos={updateOmniscript} onsetvalue={updateAction}>
+      
+      </vlocity_ins-action>
+  
+            <vlocity_ins-action class="execute-action" re-render-flyout action-wrapperclass="slds-hide" onupdateos={updateOmniscript} onsetvalue={updateAction}>
+            
+            </vlocity_ins-action>
+            </div>
+          </template>

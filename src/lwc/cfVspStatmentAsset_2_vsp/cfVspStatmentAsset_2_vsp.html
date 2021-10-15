@@ -1,0 +1,58 @@
+<template>
+            <div class="nds-grid nds-wrap nds-is-relative">
+            <div if:false={cardLoaded} class="nds-is-absolute vloc-loader_override" style="height: 100%; width: 100%; min-height:50px; background: white; z-index: 99;">
+  <div>
+   <vlocity_ins-spinner
+      variant="brand"
+      alternative-text="Loading content..."
+      size="small"
+      theme="nds"
+      ></vlocity_ins-spinner>
+  </div>
+</div>
+            <template if:false={hasPermission}>
+              You don't have required permissions to view this card.
+            </template>
+            <template if:true={hasPermission}>
+              <template if:true={hasRecords}>
+                        <template for:each={_records} for:item="record" for:index="rindex">
+                            <vlocity_ins-flex-card-state key={record.uniqueKey} data-recordid={record.Id} record={record} data-statue="true"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state nds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="nds-grid nds-wrap nds-card nds-p-around_x-small nds-m-bottom_x-small" style="">
+          <div class="nds-col   nds-size_12-of-12 " style=""><vlocity_ins-data-table     issearchavailable="false"  issortavailable="true"  cell-level-edit="true"  pagelimit="3"  group-order="asc"  columns='\[{"fieldName":"LastDateEvt","label":"Date dernier Evt","searchable":false,"sortable":true,"type":"text"},{"fieldName":"LastEvtState","label":"Etat dernier Evt","searchable":false,"sortable":true,"type":"text"},{"fieldName":"RemainingToPay","label":"Restant à payer","searchable":false,"sortable":true,"type":"text"},{"fieldName":"AccountingDate","label":"Date comptable","searchable":false,"sortable":true,"type":"text"},{"fieldName":"QuittanceNumber","label":"Numéro de Quittance OGI","searchable":false,"sortable":true,"type":"text"}]'  records={records}  theme="nds"  ></vlocity_ins-data-table>
+      </div><div class="nds-col   nds-p-around_x-small nds-size_12-of-12 condition-element" style="">
+    <vlocity_ins-block  card={card}  record={record}  label="Détails quittance"  collapsible="true"  collapsed-by-default="true"  data-conditions='\{"id":"state-condition-object","isParent":true,"group":[]}'  theme="nds" ><div class="nds-grid nds-wrap">
+          <div class="nds-col   nds-size_12-of-12 " style=""><c-cf-vsp-child-transaction-statements  tracking-obj={_childCardTrackingObj}   card-node="\{records}"  records={_records}  parent-record={record}  record-id={recordId}  is-child-card-tracking-enabled="false"  theme="nds"  onupdateparent={updateParentData}></c-cf-vsp-child-transaction-statements>
+    </div>
+        </div></vlocity_ins-block>
+    </div>
+        </div>
+      </vlocity_ins-flex-card-state>
+                        </template>
+                      </template>
+                      <template if:false={hasRecords}>
+                            <vlocity_ins-flex-card-state  record={record} data-statue="false"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state nds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="nds-grid nds-wrap nds-card nds-p-around_x-small nds-m-bottom_x-small" style="">
+          <div class="nds-col   nds-size_12-of-12 " style=""><vlocity_ins-data-table     issearchavailable="false"  issortavailable="true"  cell-level-edit="true"  pagelimit="3"  group-order="asc"  columns='\[{"fieldName":"LastDateEvt","label":"Date dernier Evt","searchable":false,"sortable":true,"type":"text"},{"fieldName":"LastEvtState","label":"Etat dernier Evt","searchable":false,"sortable":true,"type":"text"},{"fieldName":"RemainingToPay","label":"Restant à payer","searchable":false,"sortable":true,"type":"text"},{"fieldName":"AccountingDate","label":"Date comptable","searchable":false,"sortable":true,"type":"text"},{"fieldName":"QuittanceNumber","label":"Numéro de Quittance OGI","searchable":false,"sortable":true,"type":"text"}]'  records={records}  theme="nds"  ></vlocity_ins-data-table>
+      </div><div class="nds-col   nds-p-around_x-small nds-size_12-of-12 condition-element" style="">
+    <vlocity_ins-block  card={card}  record={record}  label="Détails quittance"  collapsible="true"  collapsed-by-default="true"  data-conditions='\{"id":"state-condition-object","isParent":true,"group":[]}'  theme="nds" ><div class="nds-grid nds-wrap">
+          <div class="nds-col   nds-size_12-of-12 " style=""><c-cf-vsp-child-transaction-statements  tracking-obj={_childCardTrackingObj}   card-node="\{records}"  records={_records}  parent-record={record}  record-id={recordId}  is-child-card-tracking-enabled="false"  theme="nds"  onupdateparent={updateParentData}></c-cf-vsp-child-transaction-statements>
+    </div>
+        </div></vlocity_ins-block>
+    </div>
+        </div>
+      </vlocity_ins-flex-card-state>
+                      </template>
+            </template>
+            <template if:true={hasError}>
+            {error}
+            </template>
+            
+      <vlocity_ins-action action-wrapperclass="slds-hide" re-render-flyout class="action-trigger slds-col" onupdateos={updateOmniscript} onsetvalue={updateAction}>
+      
+      </vlocity_ins-action>
+  
+            <vlocity_ins-action class="execute-action" re-render-flyout action-wrapperclass="slds-hide" onupdateos={updateOmniscript} onsetvalue={updateAction}>
+            
+            </vlocity_ins-action>
+            </div>
+          </template>

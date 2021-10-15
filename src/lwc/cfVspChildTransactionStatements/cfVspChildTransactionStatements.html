@@ -1,0 +1,48 @@
+<template>
+            <div class="slds-grid slds-wrap slds-is-relative">
+            <div if:false={cardLoaded} class="slds-is-absolute vloc-loader_override" style="height: 100%; width: 100%; min-height:50px; background: white; z-index: 99;">
+  <div>
+   <vlocity_ins-spinner
+      variant="brand"
+      alternative-text="Loading content..."
+      size="medium"
+      theme="slds"
+      ></vlocity_ins-spinner>
+  </div>
+</div>
+            <template if:false={hasPermission}>
+              You don't have required permissions to view this card.
+            </template>
+            <template if:true={hasPermission}>
+              <template if:true={hasRecords}>
+                      <vlocity_ins-flex-card-state   data-statue="true"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-p-around_x-small slds-m-bottom_x-small" style="">
+          <div class="slds-col   slds-size_12-of-12 " style=""><vlocity_ins-output-field     record={record}  card={card}  merge-field="%3Cdiv%3EQuittances%3C/div%3E"  theme="slds"  ></vlocity_ins-output-field>
+      </div><div class="slds-col   slds-size_12-of-12 " style=""><vlocity_ins-data-table     cell-level-edit="true"  columns='\[{"fieldName":"Borderau","label":"Borderau","searchable":false,"sortable":true,"type":"text"},{"fieldName":"PrimeTtc","label":"PrimeTtc","searchable":false,"sortable":true,"type":"text"},{"fieldName":"PrimeHt","label":"PrimeHt","searchable":false,"sortable":true,"type":"text"},{"fieldName":"Date Au","label":"Date Au","searchable":false,"sortable":true,"type":"text"},{"fieldName":"DateDu","label":"DateDu","searchable":false,"sortable":true,"type":"text"}]'  group-order="asc"  issearchavailable="false"  issortavailable="true"  pagelimit="5"  records={records}  theme="slds"  ></vlocity_ins-data-table>
+      </div>
+        </div>
+      </vlocity_ins-flex-card-state>
+                </template>
+                <template if:false={hasRecords}>
+                      <vlocity_ins-flex-card-state   data-statue="false"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-p-around_x-small slds-m-bottom_x-small" style="">
+          <div class="slds-col   slds-size_12-of-12 " style=""><vlocity_ins-output-field     record={record}  card={card}  merge-field="%3Cdiv%3EQuittances%3C/div%3E"  theme="slds"  ></vlocity_ins-output-field>
+      </div><div class="slds-col   slds-size_12-of-12 " style=""><vlocity_ins-data-table     cell-level-edit="true"  columns='\[{"fieldName":"Borderau","label":"Borderau","searchable":false,"sortable":true,"type":"text"},{"fieldName":"PrimeTtc","label":"PrimeTtc","searchable":false,"sortable":true,"type":"text"},{"fieldName":"PrimeHt","label":"PrimeHt","searchable":false,"sortable":true,"type":"text"},{"fieldName":"Date Au","label":"Date Au","searchable":false,"sortable":true,"type":"text"},{"fieldName":"DateDu","label":"DateDu","searchable":false,"sortable":true,"type":"text"}]'  group-order="asc"  issearchavailable="false"  issortavailable="true"  pagelimit="5"  records={records}  theme="slds"  ></vlocity_ins-data-table>
+      </div>
+        </div>
+      </vlocity_ins-flex-card-state>
+                </template>
+            </template>
+            <template if:true={hasError}>
+            {error}
+            </template>
+            
+      <vlocity_ins-action action-wrapperclass="slds-hide" re-render-flyout class="action-trigger slds-col" onupdateos={updateOmniscript} onsetvalue={updateAction}>
+      
+      </vlocity_ins-action>
+  
+            <vlocity_ins-action class="execute-action" re-render-flyout action-wrapperclass="slds-hide" onupdateos={updateOmniscript} onsetvalue={updateAction}>
+            
+            </vlocity_ins-action>
+            </div>
+          </template>

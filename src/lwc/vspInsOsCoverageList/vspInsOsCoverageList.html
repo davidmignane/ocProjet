@@ -1,0 +1,16 @@
+<template>
+    <div class={selectedCoveragesClasses}>
+        <c-vsp-ins-os-coverage channel={channel} if:true={isSingleInstance} currency-symbol={currencySymbol} coverage={product} root-channel={rootChannel} product-instance={productInstance} theme={theme}></c-vsp-ins-os-coverage>
+        <template for:each={selectedCoverages} for:item="selectedCoverage">
+            <c-vsp-ins-os-coverage channel={channel} key={selectedCoverage.Id} currency-symbol={currencySymbol} coverage={selectedCoverage} root-channel={rootChannel} product-instance={productInstance} theme={theme}></c-vsp-ins-os-coverage>
+        </template>
+    </div>
+    <div if:true={unselectedCoverages.length} class="vloc-ins-unselected-coverages">
+        <h3 class="slds-p-vertical_small nds-p-vertical_small vloc-ins-coverages-heading">Non sélectionné</h3>
+        <template for:each={unselectedCoverages} for:item="unselectedCoverage">
+            <div key={unselectedCoverage.Id}>
+                <c-vsp-ins-os-coverage  channel={channel} currency-symbol={currencySymbol} coverage={unselectedCoverage} root-channel={rootChannel} product-instance={productInstance} theme={theme}></c-vsp-ins-os-coverage>
+            </div>
+        </template>
+    </div>
+</template>

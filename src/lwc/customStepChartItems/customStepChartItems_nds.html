@@ -1,0 +1,45 @@
+<template>
+    <template if:true={completed}>
+      <li data-index={jsonDef.indexInParent}
+          class="nds-progress__item nds-is-relative nds-is-completed"
+          style="width:100%"
+          >
+          <p
+            class="step-chart-text-wrap nds-text-heading_medium nds-text-align_center"
+            data-index={jsonDef.indexInParent}
+            onclick={handleStepClick}
+          >{stepLabel}</p>
+      </li>
+    </template>
+    <template if:true={inProgress}>
+        <li data-index={jsonDef.indexInParent}
+          class="nds-progress__item nds-is-active"
+          style="cursor:default;width:100%">
+          <p
+            class="step-chart-text-wrap nds-text-heading_medium nds-text-color_inverse nds-text-align_center"
+            data-index={jsonDef.indexInParent}
+            onclick={handleStepClick}
+          >{stepLabel}</p>
+      </li>
+    </template>
+    <template if:true={pristine}>
+        <li class="nds-progress__item"
+          style="cursor: default;width:100%">    
+            <p  
+              class="step-chart-text-wrap nds-text-heading_medium nds-text-align_center"
+              data-index={jsonDef.indexInParent}
+              onclick={handleStepClick}
+              >{stepLabel}</p>
+        </li>
+    </template>
+    <template if:true={nonpristine}>
+      <li class="nds-progress__item nds-is-nonpristine"
+          style="cursor: default;width:100%">
+             <p
+                class="step-chart-text-wrap nds-text-heading_medium nds-text-align_center"
+                data-index={jsonDef.indexInParent}
+                onclick={handleStepClick}
+             >{stepLabel}</p>
+      </li>
+    </template>
+  </template>

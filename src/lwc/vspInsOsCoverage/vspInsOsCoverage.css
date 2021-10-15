@@ -1,0 +1,128 @@
+/*insOsCoverage.css*/
+.vloc-ins-coverage-card {
+    padding-bottom: 0.25rem;
+    color: #49739c;
+    /*background-color: #f8fbfe;*/
+}
+
+.vloc-ins-optional-unselected:hover {
+    background-color: #ecf2fa;
+}
+
+.vloc-ins-coverage-header {
+    margin-bottom: 0.5rem;
+    padding: 1rem 2rem 0.5rem 1rem;
+}
+
+.vloc-ins-custom-icon {
+    width: 1rem;
+    height: auto;
+    padding: 0.5rem;
+}
+
+.vloc-ins-coverage-details {
+    padding-bottom: 0.25rem;
+    width: 100%;
+    border-bottom: 1px solid #e6f1fb;
+}
+
+.vloc-ins-root-product .vloc-ins-coverage-details {
+    border-bottom: none;
+}
+
+.vloc-ins-coverage-name {
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #000000;
+    line-height: 1.25;
+}
+
+.vloc-ins-coverage-description {
+    font-style: italic;
+    color: #000000;
+    font-size: 1rem;
+    font-weight: 100;
+}
+
+.vloc-ins-coverage-total {
+    font-size: 1.25rem;
+    line-height: 1.25;
+}
+
+.vloc-ins-product-attribute-category {
+    margin: 1rem 2rem 1rem 4.4rem;
+    max-height: 150rem;
+    opacity: 1;
+    overflow: initial;
+    transition: max-height 250ms cubic-bezier(0.65, 0.05, 0.36, 1),
+                opacity 250ms cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.vloc-ins-toggle-container-hide {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.vloc-ins-coverage-collapse-toggle {
+    height: 2rem;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 2rem;
+    user-select: none;
+    cursor: pointer;
+    border-bottom: 1px solid #d8dde6;
+}
+
+.vloc-ins-coverage-collapse-toggle:hover {
+    background-color: #ebf3fc;
+}
+
+.vloc-ins-single-instance {
+    border-radius: .25rem;
+}
+
+.vloc-ins-single-instance .vloc-ins-optional-unselected .vloc-ins-coverage-collapse-toggle {
+    border-bottom: none;
+}
+
+.vloc-ins-optional-unselected .vloc-ins-coverage-collapse-toggle:hover {
+    background-color: #f8fbfe;
+}
+
+.vloc-ins-single-instance.vloc-ins-optional-unselected {
+  border: 1px solid #000000;
+}
+
+@media screen and (max-width: 600px) {
+    .vloc-ins-coverage-header {
+        padding-left: 0;
+        padding-right: 0;
+        line-height: 1.4;
+    }
+
+    .vloc-ins-coverage-name {
+        font-size: 1.1rem;
+    }
+
+    .vloc-ins-coverage-description {
+        font-size: 0.7rem;
+    }
+
+    .vloc-ins-coverage-total {
+        font-size: 0.875rem;
+    }
+
+    .vloc-ins-product-attribute-category {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .vloc-ins-icon-container {
+        display: none;
+    }
+}

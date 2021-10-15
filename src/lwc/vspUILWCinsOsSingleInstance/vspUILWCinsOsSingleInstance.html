@@ -1,0 +1,39 @@
+<template>
+    <div if:false={isLoaded}>
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </div>
+    <div if:true={dataError} class="slds-has-error slds-m-top_none nds-has-error nds-m-top_none">
+        <div class="slds-form-element__help nds-form-element__help">No input provided</div>
+    </div>
+    <c-vsp-ins-os-coverage-list channel={channel} if:true={product} product={product} root-channel={rootChannel} product-instance="single" theme={theme}></c-vsp-ins-os-coverage-list>
+    <div if:true={product} class="vloc-ins-os-amount-container slds-size_1-of-1 slds-p-horizontal_medium slds-text-heading_medium slds-text-align_center nds-size_1-of-1 nds-p-horizontal_medium nds-text-heading_medium nds-text-align_center">
+        <div if:true={product.totalTaxFeeAmount} class="vloc-ins-coverages-amount-container">
+            <p if:true={showTextElements}>
+                Prime mensuelle HT
+            </p>
+            <span if:true={showTextElements} class="slds-m-left_large nds-m-left_large">
+                <lightning-formatted-number value={product.Price} format-style="currency" currency-code={currency.code} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+            </span>
+        </div>
+        <div if:true={product.totalTaxFeeAmount} class="vloc-ins-coverages-amount-container">
+            <p if:true={showTextElements}>
+                TCA mensuelle
+            </p>
+            <span if:true={showTextElements} class="slds-m-left_large nds-m-left_large">
+                <lightning-formatted-number value={product.totalTaxFeeAmount} format-style="currency" currency-code={currency.code} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+            </span>
+        </div>
+        <div class="vloc-ins-coverages-amount-container">
+            <b>Prime mensuelle TTC</b>
+            <span class="vloc-ins-coverages-total-mensuel slds-m-left_large nds-m-left_large">
+                <b><lightning-formatted-number value={totalPrice} format-style="currency" currency-code={currency.code} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number></b>
+            </span>
+        </div>
+        <div class="vloc-ins-coverages-amount-container">
+            Prime annuelle TTC
+            <span class="vloc-ins-coverages-total slds-m-left_large nds-m-left_large">
+                <lightning-formatted-number value={totalAnnualPrice} format-style="currency" currency-code={currency.code} minimum-fraction-digits="2" maximum-fraction-digits="2"></lightning-formatted-number>
+            </span>
+        </div>
+    </div>
+</template>

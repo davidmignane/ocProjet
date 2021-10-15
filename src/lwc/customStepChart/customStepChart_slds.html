@@ -1,0 +1,78 @@
+<template>
+    <slot>
+      <div if:false={isVertical}
+           class="slds-omniscript_stepform slds-size_1-of-1 slds-small-size_1-of-1 slds-large-size_8-of-12
+                  slds-align_absolute-center slds-grid slds-m-top_xx-large slds-m-bottom_x-large">
+        <div class="slds-size_1-of-1">
+          <div class="slds-progress slds-size_1-of-1">
+            <ol class="slds-progress__list">
+              <template for:each={jsonDef.children}
+                        for:item="step"
+                        for:index="index">
+                <template if:true={step.isStep}>
+                  <vlocity_ins-omniscript-step-chart-items key={step.name}
+                                                 json-def={step}
+                                                 is-vertical={isVertical}
+                                                 json-data={jsonDef.response}
+                                                 current-index={currentIndex}
+                                                 script-header-def={scriptHeaderDef}
+                                                 
+                                                 >
+                  </vlocity_ins-omniscript-step-chart-items>
+                </template>
+              </template>
+            </ol>
+            <div class="slds-progress-bar slds-progress-bar_x-small"
+                 aria-valuemin="0"
+                 aria-valuemax="100"
+                 aria-valuenow={stepProgressValue}
+                 role="progressbar">
+              <span class="slds-progress-bar__value">
+                <span class="slds-assistive-text">
+                  Progress: {stepProgressValue}%
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div if:true={isVertical}
+           class="slds-m-top_medium slds-p-left_large">
+        <vlocity_ins-omniscript-formatted-rich-text class="slds-text-longform slds-path__guidance-content"
+                                          value={stepInstruction}>
+        </vlocity_ins-omniscript-formatted-rich-text>
+        <h1 class="slds-page-header__title slds-truncate omni-stepchart-heading">
+          Steps
+        </h1>
+        <div class="slds-progress slds-progress_vertical slds-p-vertical_medium">
+          <ol class="slds-progress__list">
+            <template for:each={jsonDef.children}
+                      for:item="step"
+                      for:index="index">
+              <template if:true={step.isStep}>
+                <vlocity_ins-omniscript-step-chart-items key={step.name}
+                                               json-def={step}
+                                               is-vertical={isVertical}
+                                               json-data={jsonDef.response}
+                                               class="slds-progress__item"
+                                               last-step-index={lastStepIndex}
+                                               last-executed-step-index={_lastExecutedStepIndex}
+                                               first-visible-step-index={firstVisibleStepIndex}
+                                               current-index={currentIndex}
+                                               script-header-def={scriptHeaderDef}>
+                </vlocity_ins-omniscript-step-chart-items>
+              </template>
+            </template>
+          </ol>
+          <div aria-valuemin="0"
+               aria-valuemax="100"
+               aria-valuenow={stepProgressValue}
+               role="progressbar">
+            <span class="slds-assistive-text">
+              Progress: {stepProgressValue}%
+            </span>
+          </div>
+        </div>
+      </div>
+    </slot>
+</template>

@@ -1,0 +1,26 @@
+/*insOsCoverageList.css*/
+:host {
+    width: 100%;
+}
+
+.vloc-ins-single-instance-box {
+    border-radius: .25rem;
+    border: 1px solid #000000;
+}
+
+.vloc-ins-coverages-heading {
+    font-size: 1.25rem;
+    line-height: 1.25;
+}
+
+.vloc-ins-unselected-coverages {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media screen and (max-width: 450px) {
+    .vloc-ins-unselected-coverages {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

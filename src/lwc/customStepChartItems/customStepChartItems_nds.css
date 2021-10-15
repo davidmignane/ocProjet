@@ -1,0 +1,27 @@
+.nds-progress {
+  width: 100%;
+}
+
+.nds-progress__item {
+  background-color: lightgray;
+}
+
+.nds-is-active {
+  background-color: #ffb300;
+}
+
+.nds-progress__item {
+  display: -ms-inline-flexbox;
+  display: revert;
+  align-self: center;
+  cursor: pointer;
+  outline: 0;
+  text-align: center;
+  padding: 10px;
+}
+
+.step-chart-text-wrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

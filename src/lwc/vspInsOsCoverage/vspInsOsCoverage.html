@@ -1,0 +1,46 @@
+<template>
+    <article if:true={shouldDisplayCoverage} class={coverageParentWrapperClasses}>
+        <div class="slds-media slds-media_center slds-has-flexi-truncate nds-media nds-media_center nds-has-flexi-truncate vloc-ins-coverage-header">
+            <div if:true={shouldDisplayIcon} class="slds-media__figure nds-media__figure vloc-ins-icon-container">
+                <span class="slds-icon_container nds-icon_container">
+                    <img if:true={coverage.ImageId} src={coverageImageSrc} class="slds-icon nds-icon vloc-ins-custom-icon"/>
+                    <vlocity_ins-icon if:false={isCoverageSpec} icon-name="custom:custom93" size="large" color="#0070D2"></vlocity_ins-icon>
+                    <vlocity_ins-icon if:true={isCoverageSpec} icon-name="action:approval" size="large" color="#0070D2"></vlocity_ins-icon>
+
+                </span>
+
+            </div>
+            <div if:true={coverage.isOptional} class="slds-media__figure slds-form-element slds-m-right_large nds-media__figure nds-form-element nds-m-right_large">
+                <div class="slds-form-element__control nds-form-element__control" onclick={toggleOptionalCoverage}>
+                    <span class="slds-checkbox_add-button nds-checkbox_add-button" if:true={showCheckbox}>
+                        <input type="checkbox" name="options" class="slds-assistive-text nds-assistive-text" checked={coverage.isSelected}/>
+                        <label class="slds-checkbox_faux nds-checkbox_faux">
+                            <span class="slds-assistive-text nds-assistive-text">Select optional coverage</span>
+                        </label>
+                    </span>
+                </div>
+            </div>
+            <div class="slds-grid slds-grid_align-spread nds-grid nds-grid_align-spread vloc-ins-coverage-details">
+                <div class="vloc-ins-coverage-description-container">
+                    <h3 class="vloc-ins-coverage-name">{coverage.Name}</h3>
+                    <div class="slds-text-body_regular nds-text-body_regular vloc-ins-coverage-description">{coverage.Description}</div>
+                </div>
+              <!-- <div if:false={isRootProduct} class="vloc-ins-coverage-total">
+                    <lightning-formatted-number value={coveragePrice} format-style="currency" currency-code={currency} minimum-fraction-digits="0" maximum-fraction-digits="0"></lightning-formatted-number>
+                </div> -->
+            </div>
+        </div>
+        <!-- Attribute component container -->
+       <!-- <template if:false={isCategoryEmpty}>
+            <div class={attributesContainerClasses}>
+                <template for:each={attributeCategories.records} for:item="attributeCategory">
+                    <vlocity_ins-ins-attribute-category attribute-style="coveragelist" currency-symbol={currencySymbol} key={attributeCategory.id} attribute-category={attributeCategory} theme={theme} root-channel={rootChannel} class={hideAttributesClasses}></vlocity_ins-ins-attribute-category>
+                </template>
+            </div>
+            <div if:false={isRootProduct} class="vloc-ins-coverage-collapse-toggle" onclick={toggleAttributes}>
+                <span>{collapseText} Coverage Attributes</span>
+                <vlocity_ins-icon variant="inverse" icon-name={chevronIcon} theme={theme} extraclass="slds-m-horizontal_xx-small nds-m-horizontal_xx-small" size="xx-small"></vlocity_ins-icon>
+            </div>
+        </template>-->
+    </article>
+</template>

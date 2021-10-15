@@ -1,0 +1,173 @@
+<apex:page Controller="MandatPDF_CTL" renderas="pdf">
+    <apex:stylesheet value="$Resource.MandatStyle"/>
+    <!-- PDF Header ######################################################################################################################################     -->   
+    <table border="0" cellspacing="0" cellpadding="0" width="100%" id="tableHeader">
+        <tr>
+            <td >
+                <span style="font-style:normal;font-weight:bold;font-size:16pt;font-family:Verdana;color:#000000">MANDAT DE PRELEVEMENT SEPA</span>
+                <br/>
+            </td>
+            <td align="right">
+                <img src='{!URLFOR($Resource.MandatPng)}' title="logo" />
+            </td>
+            
+        </tr>
+        <tr>
+            <td>
+            
+                <br/><br/>
+    
+                <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Verdana;color:#000000">Référence unique de Mandat (RUM): </span><span style="font-style:normal;font-weight:normal;font-size:12pt;font-family:ArialMT;color:#000000">{!rum}</span>
+                            
+            </td>
+        </tr>
+    </table>
+    
+    <br/>   
+  
+    <!-- PDF Text after header ######################################################################################################################################     --> 
+    
+   <div >
+    <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Verdana;color:#000000">
+    Le "mandat de prélèvement SEPA" est le nouveau document officiel qui remplace désormais l'autorisation de prélèvement au niveau européen (SEPA).
+    <br/>
+    En signant ce formulaire de mandat, vous autorisez VERSPIEREN à envoyer des instructions à votre banque pour débiter votre compte, et votre banque à débiter votre compte conformément aux instructions de VERSPIEREN
+    
+    </span>
+    <br/>
+   </div>
+    
+   <!-- PDF Customer table ######################################################################################################################################     -->  
+    <br/>
+    <table border="1px solid black" cellspacing="0" cellpadding="0" width="100%" id="tabletext2" class="tabletext2">
+     <tr>   
+   <td colspan="2"> 
+   <table width="100%" id="tableCustomer" class="tableCustomer">
+   
+      <tr>
+        <td width="20%">
+            <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Verdana;color:#000000"> Votre Nom / Prénom </span>
+        </td> 
+        <td width="80%">
+            <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Verdana;color:#000000"> {!Account.LastName} {!Account.FirstName}</span>
+        </td>
+      </tr>
+       
+      <tr>
+        <td width="20%">
+            <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Verdana;color:#000000"> Votre adresse </span>
+        </td> 
+        <td width="80%">
+            <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Verdana;color:#000000"> {!Account.BillingStreet}</span>
+        </td>
+      </tr> 
+       <tr>
+        <td width="20%">
+            <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Verdana;color:#000000"> </span>
+        </td> 
+        <td width="80%">
+            <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Verdana;color:#000000"> {!Account.BillingPostalCode} {!Account.BillingCity} {!Account.BillingCountry}</span>
+        </td>
+      </tr>
+      <tr><td><br/> </td></tr>
+       <tr>
+        <td width="20%">
+            <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Verdana;color:#000000"> Les coordonnées<br/> de votre compte </span>
+        </td> 
+        <td width="80%">
+            <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Verdana;color:#000000">{!iban}</span>
+            <br/>
+            <span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Verdana;color:#000000"><strong>IBAN</strong> - Numéro d'identification international du compte bancaire</span>
+            
+           </td>
+      </tr>
+       
+             <tr>
+        <td width="20%">
+            <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Verdana;color:#000000">  </span>
+        </td> 
+        <td width="80%">
+            <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Verdana;color:#000000">.......................................................</span>
+            <br/>
+            <span style="font-style:normal;font-weight:normal;font-size:8pt;font-family:Verdana;color:#000000"><strong>BIC</strong> - Code international d'identification de votre banque</span>
+            
+           </td>
+      </tr>
+       <tr><td><br/> </td></tr>
+      <tr>
+        <td width="20%">
+            <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Verdana;color:#000000"> Nom du créancier: </span>
+        </td> 
+        <td width="80%">
+            <span style="font-style:normal;font-weight:Bold;font-size:10pt;font-family:Verdana;color:#000000"> VERSPIEREN </span>
+        </td>
+      </tr>
+      
+      <tr>
+        <td width="20%">
+            <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Verdana;color:#000000"> ICS: </span>
+        </td> 
+        <td width="80%">
+            <span style="font-style:normal;font-weight:Bold;font-size:10pt;font-family:Verdana;color:#000000">
+                FR20ZZZ144762
+                <br/>1 avenue Francois Mitterand
+                <br/>59290 WASQUEHAL - FRANCE </span>
+        </td>
+
+      </tr>
+      
+      <tr>
+        <td width="20%">
+            <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Verdana;color:#000000"> Type de paiement : </span>
+        </td> 
+        <td width="80%">
+            <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Verdana;color:#000000">Prélèvement récurrent / répétitif</span>
+        </td>
+      </tr>
+ 
+   </table>
+    </td> 
+    </tr>
+    <tr>    
+    <td width = "40%">
+        <span style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Verdana;color:#000000">REFERENCE CLIENT</span>
+        <br/>
+        {!ogiContract}
+        <br/><br/>
+    </td>
+    <td width = "60%">
+        <br/>
+        <span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Verdana;color:#000000">Signé à<stong>__________________________</stong>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Le  |_|_| |_|_| |_|_|_|_|</span>
+        <br/>
+        <span style="font-style:normal;font-weight:bold;font-size:10pt;font-family:Verdana;color:#000000;text-decoration:underline">Signature (s)<br/><br/><br/></span><br/>
+    </td>
+    </tr>    
+    </table>    
+    
+    <br/>
+    
+     <!-- PDF Text1 table ######################################################################################################################################     -->  
+    
+    
+    <table border="1px solid black" cellspacing="0" cellpadding="0" width="100%" id="tabletext1" class="tabletext1">
+        <td>
+        <br/><span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Verdana;color:#000000">
+       Les informations contenues dans le présent mandat, qui doit être complété, sont destinées à n'être utilisées par le créancier que pour la gestion de
+sa relation avec son client. Elles pourront donner lieu à l'exercice, par ce dernier, de ses droits d'oppositions, d'accès et de rectification tels que prévus
+aux articles 38 et suivants de la loi n°78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers et aux libertés. 
+            </span><br/><br/><br/>
+        </td>    
+    </table>
+    
+     <!-- PDF footer Text ######################################################################################################################################     -->  
+    <p><span style="font-style:normal;font-weight:normal;font-size:10pt;font-family:Verdana;color:#000000">
+        Vous bénéficiez du droit d’être remboursé par votre banque selon les conditions décrites dans la convention que vous avez passée avec elle. Toute
+        demande éventuelle de remboursement devra être présentée:<br/><br/>
+        &nbsp;&nbsp;&nbsp;• Dans les 8 semaines suivant la date de débit de votre compte pour un prélèvement autorisé,<br/>
+        &nbsp;&nbsp;&nbsp;• Sans tarder et au plus tard dans les 13 mois en cas de prélèvement non autorisé.<br/><br/>
+        Vos droits concernant le présent mandat sont expliqués dans un document que vous pouvez obtenir auprès de votre banque.
+        </span>
+    </p>
+    
+    
+</apex:page>

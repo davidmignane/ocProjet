@@ -1,0 +1,26 @@
+/*insOsSingleInstance.css*/
+:host {
+    width: 100%;
+}
+
+.vloc-ins-os-amount-container {
+    margin-top: 0.8rem;
+    font-size: 1rem;
+}
+
+.vloc-ins-coverages-amount-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 70%;
+    margin: 0 auto;
+}
+
+.vloc-ins-coverages-total{
+    font-weight: 300;
+}
+
+@media screen and (max-width: 450px) {
+    .vloc-ins-coverages-amount-container {
+        max-width: none;
+    }
+}

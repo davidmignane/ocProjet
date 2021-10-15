@@ -1,0 +1,62 @@
+<template>
+            <div class="slds-grid slds-wrap slds-is-relative">
+            <div if:false={cardLoaded} class="slds-is-absolute vloc-loader_override" style="height: 100%; width: 100%; min-height:50px; background: white; z-index: 99;">
+  <div>
+   <vlocity_ins-spinner
+      variant="brand"
+      alternative-text="Loading content..."
+      size="medium"
+      theme="slds"
+      ></vlocity_ins-spinner>
+  </div>
+</div>
+            <template if:false={hasPermission}>
+              You don't have required permissions to view this card.
+            </template>
+            <template if:true={hasPermission}>
+              <template if:true={hasRecords}>
+                        <template for:each={_records} for:item="record" for:index="rindex">
+                            <vlocity_ins-flex-card-state key={record.uniqueKey} data-recordid={record.Id} record={record} data-statue="true"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-p-around_x-small slds-m-bottom_x-small" style="">
+          <div class="slds-col  slds-text-align_center  slds-size_1-of-12  " style="     : #ccc 1px solid; 
+         "><vlocity_ins-flex-icon     record={record}  extraclass=""  icon-name="custom:custom17"  icon-type="Salesforce SVG"  imgsrc=""  size="small"  variant="error"  theme="slds"  ></vlocity_ins-flex-icon>
+      </div><div class="slds-col   slds-size_4-of-12  " style="     : #ccc 1px solid; 
+         "><vlocity_ins-output-field     record={record}  card={card}  merge-field="%3Cdiv%20class=%22slds-text-align_left%22%3E%3Cspan%20style=%22font-family:%20'Salesforce%20Sans',%20Arial,%20sans-serif;%20font-size:%2011pt;%20background-color:%20initial;%22%3E%3Cspan%20class=%22slds-text-body_regular%22%20style=%22background-color:%20initial;%20font-size:%200.8125rem;%22%3E%20N&deg;%20Quittance%20:%20%3Cstrong%3E%7BQuittanceNumber%7D%3C/strong%3E%20%3C/span%3E%3C/span%3E%3C/div%3E"  theme="slds"  ></vlocity_ins-output-field>
+      </div><div class="slds-col   slds-size_4-of-12  " style="     : #ccc 1px solid; 
+         "><vlocity_ins-output-field     record={record}  card={card}  merge-field="%3Cdiv%20class=%22slds-text-align_left%22%3EDate%20dernier%20Ev&egrave;nement:%20%7BLastDateEvt%7D%3C/div%3E%0A%3Cdiv%20class=%22slds-text-align_left%22%3EEtat%20dernier%20Ev&egrave;nement:&nbsp;%20%7BLastEvtState%7D%3Cspan%20style=%22font-family:%20Calibri;%20font-size:%2011pt;%20background-color:%20initial;%22%3E&nbsp;%3C/span%3E%3C/div%3E"  theme="slds"  ></vlocity_ins-output-field>
+      </div><div class="slds-col   slds-size_3-of-12  " style="     : #ccc 1px solid; 
+         "><vlocity_ins-output-field     record={record}  card={card}  merge-field="%3Cdiv%20class=%22slds-text-align_right%22%3E%3Cspan%20style=%22font-family:%20'Salesforce%20Sans',%20Arial,%20sans-serif;%20font-size:%2011pt;%20background-color:%20initial;%22%3E%3Cspan%20class=%22slds-text-body_regular%22%20style=%22background-color:%20initial;%20font-size:%200.8125rem;%22%3EDate%20comptable:%20%7BAccountingDate%7D%20%3C/span%3E%3C/span%3E%3C/div%3E%0A%3Cdiv%20class=%22slds-text-align_right%22%3E%3Cspan%20style=%22font-family:%20'Salesforce%20Sans',%20Arial,%20sans-serif;%20font-size:%2011pt;%20background-color:%20initial;%22%3E%3Cspan%20class=%22slds-text-body_regular%22%20style=%22background-color:%20initial;%20font-size:%200.8125rem;%22%3ERestant%20&agrave;%20payer:%20%3Cspan%20style=%22color:%20#f1c40f;%22%3E%3Cstrong%3E%3Cspan%20style=%22color:%20#e67e23;%22%3E%7BRemainingToPay%7D%3C/span%3E&nbsp;%3C/strong%3E%3C/span%3E%3C/span%3E%3C/span%3E%3C/div%3E"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div>
+      </vlocity_ins-flex-card-state>
+                        </template>
+                      </template>
+                      <template if:false={hasRecords}>
+                            <vlocity_ins-flex-card-state  record={record} data-statue="false"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-p-around_x-small slds-m-bottom_x-small" style="">
+          <div class="slds-col  slds-text-align_center  slds-size_1-of-12  " style="     : #ccc 1px solid; 
+         "><vlocity_ins-flex-icon     record={record}  extraclass=""  icon-name="custom:custom17"  icon-type="Salesforce SVG"  imgsrc=""  size="small"  variant="error"  theme="slds"  ></vlocity_ins-flex-icon>
+      </div><div class="slds-col   slds-size_4-of-12  " style="     : #ccc 1px solid; 
+         "><vlocity_ins-output-field     record={record}  card={card}  merge-field="%3Cdiv%20class=%22slds-text-align_left%22%3E%3Cspan%20style=%22font-family:%20'Salesforce%20Sans',%20Arial,%20sans-serif;%20font-size:%2011pt;%20background-color:%20initial;%22%3E%3Cspan%20class=%22slds-text-body_regular%22%20style=%22background-color:%20initial;%20font-size:%200.8125rem;%22%3E%20N&deg;%20Quittance%20:%20%3Cstrong%3E%7BQuittanceNumber%7D%3C/strong%3E%20%3C/span%3E%3C/span%3E%3C/div%3E"  theme="slds"  ></vlocity_ins-output-field>
+      </div><div class="slds-col   slds-size_4-of-12  " style="     : #ccc 1px solid; 
+         "><vlocity_ins-output-field     record={record}  card={card}  merge-field="%3Cdiv%20class=%22slds-text-align_left%22%3EDate%20dernier%20Ev&egrave;nement:%20%7BLastDateEvt%7D%3C/div%3E%0A%3Cdiv%20class=%22slds-text-align_left%22%3EEtat%20dernier%20Ev&egrave;nement:&nbsp;%20%7BLastEvtState%7D%3Cspan%20style=%22font-family:%20Calibri;%20font-size:%2011pt;%20background-color:%20initial;%22%3E&nbsp;%3C/span%3E%3C/div%3E"  theme="slds"  ></vlocity_ins-output-field>
+      </div><div class="slds-col   slds-size_3-of-12  " style="     : #ccc 1px solid; 
+         "><vlocity_ins-output-field     record={record}  card={card}  merge-field="%3Cdiv%20class=%22slds-text-align_right%22%3E%3Cspan%20style=%22font-family:%20'Salesforce%20Sans',%20Arial,%20sans-serif;%20font-size:%2011pt;%20background-color:%20initial;%22%3E%3Cspan%20class=%22slds-text-body_regular%22%20style=%22background-color:%20initial;%20font-size:%200.8125rem;%22%3EDate%20comptable:%20%7BAccountingDate%7D%20%3C/span%3E%3C/span%3E%3C/div%3E%0A%3Cdiv%20class=%22slds-text-align_right%22%3E%3Cspan%20style=%22font-family:%20'Salesforce%20Sans',%20Arial,%20sans-serif;%20font-size:%2011pt;%20background-color:%20initial;%22%3E%3Cspan%20class=%22slds-text-body_regular%22%20style=%22background-color:%20initial;%20font-size:%200.8125rem;%22%3ERestant%20&agrave;%20payer:%20%3Cspan%20style=%22color:%20#f1c40f;%22%3E%3Cstrong%3E%3Cspan%20style=%22color:%20#e67e23;%22%3E%7BRemainingToPay%7D%3C/span%3E&nbsp;%3C/strong%3E%3C/span%3E%3C/span%3E%3C/span%3E%3C/div%3E"  theme="slds"  ></vlocity_ins-output-field>
+      </div>
+        </div>
+      </vlocity_ins-flex-card-state>
+                      </template>
+            </template>
+            <template if:true={hasError}>
+            {error}
+            </template>
+            
+      <vlocity_ins-action action-wrapperclass="slds-hide" re-render-flyout class="action-trigger slds-col" onupdateos={updateOmniscript} onsetvalue={updateAction}>
+      
+      </vlocity_ins-action>
+  
+            <vlocity_ins-action class="execute-action" re-render-flyout action-wrapperclass="slds-hide" onupdateos={updateOmniscript} onsetvalue={updateAction}>
+            
+            </vlocity_ins-action>
+            </div>
+          </template>

@@ -1,0 +1,424 @@
+<apex:page Controller="CertificatAdhesionPDF_CTL" renderas="pdf" standardstylesheets="false" showheader="false">    
+
+ <apex:stylesheet value="{!$Resource.ResourcePDF}"/>
+ 
+
+<div class="header">
+      <div style="color:#9D9D9D;font-family: Arial,Helvetica Neue,Helvetica,sans-serif; font-size:small;">
+         <table width="100%">
+            <tr>
+               <td align="left">
+           <apex:image url="{!$Resource.VerspierenLogo}" width="180px" />
+               </td>
+               <td align="right">
+                  <apex:image url="{!$Resource.electroSurLogo}" width="180px" />
+
+               </td>
+            </tr>
+         </table>
+      </div>
+   </div>
+
+   <div class="footer">
+      <div style="color:#9D9D9D;font-family: sans-serif; font-size:small;">
+         <table width="100%">
+            <tr>
+               <td align="left">
+                  <font style="font-size:7pt;font-family:sans-serif">
+            Electro Dépôt |  {!Asset.Product2.Name}<br/>
+            Contrat collectif n° LEKKS2 – Version 01/05/2021<br/>
+            Certificat d’adhésion
+        </font>           
+               </td>
+               <td align="right">Page <span class="pagenumber"/> sur <span class="pagecount"/></td>
+            </tr>
+         </table>
+      </div>
+   </div>
+
+ <p>
+
+    <!-- PDF TITLE######################################################################################################################################     -->   
+    <center>
+        <b><font style="font-size:13pt;font-family:sans-serif;color:#1F497D">
+            «{!Asset.Product2.Name} »
+        <br/>
+            CERTIFICAT D’ADHESION
+        <br/>
+            Numéro d’adhésion  «{!Asset.Ext_OGIContractID__c} »
+        </font></b>
+    </center>
+     <br/>
+    
+    <!-- First Text ######################################################################################################################################     -->   
+     <DIV style="text-align:justify;">  
+       
+    <font style="font-size:9pt;font-family:sans-serif"> 
+    Certificat d’adhésion relatif au contrat d’assurance collective de dommages n° LEKKS2 <strong>«{!Asset.Product2.Name}»</strong> (ci-après dénommé « le contrat ») souscrit :
+  </font>
+   <ul style="font-size:9pt;font-family:sans-serif">
+      <li> par <b><font style="color:#1F497D">ELECTRO DEPOT</font></b>, SAS au capital de 1 471 415 €, Siège social : 1 route de Vendeville 59155 FÂCHES-THUMESNIL, 
+      immatriculée au RCS Lille métropole sous le n° 433 744 539 et à l’ORIAS sous le n° 13 003 536 (ci-après dénommé « le Distributeur »), </li> 
+      <li> auprès de <font style="font-weight:Bold;color:#1F497D">SEYNA</font>, SA au capital de 801.929,04€, dont le siège social est situé 20 bis rue Louis-Philippe,
+       92200 Neuilly sur Seine, immatriculée au RCS de Nanterre sous le n° 843 974 635, entreprise régie par le code des assurances (ci-après “l’Assureur”), </li> 
+      <li> par l’intermédiaire de <font style="font-weight:Bold;color:#1F497D">COFIDIS</font>, Société Anonyme à Directoire et Conseil de surveillance, au capital de 
+      67 500 000€, Siège social : Parc de la Haute Borne, 61 avenue Halley 59 866 Villeneuve d’Ascq, immatriculée au RCS Lille métropole sous le <br/>n° 325 307 106 
+      et à l’ORIAS sous le n° 07 023 493 (ci-après dénommée « le Courtier » ou « COFIDIS »), </li> 
+      <li> et géré par <font style="font-weight:Bold;color:#1F497D">VERSPIEREN</font> Société Anonyme à Conseil d’administration, au capital de 1 000 000 €,
+       Siège social : 1, avenue François Mitterrand 59290 WASQUEHAL, immatriculée au RCS Lille métropole sous le n° 321 502 049 et à l’ORIAS sous le <br/>n° 07 001 542 (ci-après dénommée 
+       « le Courtier gestionnaire » ou « VERSPIEREN »). </li> 
+         </ul>
+    <font style="font-size:9pt;font-family:sans-serif">
+    La notice d’information est remise à l’Adhérent lors de son adhésion au Contrat n° LEKKS2 et il est invité à conserver ce document pendant toute la durée de celui-ci.
+    </font>
+  
+    </DIV> 
+    
+    <br/>
+       
+   <!-- Coordonnées de l'adhérent Table ###############################################################################################################     -->   
+    <font style="font-weight:Bold;font-size:11pt;font-family:sans-serif;text-decoration:underline;color:#1F497D,line-height: 1px">
+    Coordonnées de l’Adhérent
+    </font>
+    <table width="100%" id="tableCustomer" class="tableCustomer" cellspacing="0" cellpadding="0">
+   
+      <tr>
+        <td width="30%">
+            <font style="font-size:9pt;font-family:sans-serif"> Nom </font>
+        </td> 
+        <td width="70%">
+            <font style="font-size:9pt;font-family:sans-serif"> {!Asset.Account.LastName}</font>
+        </td>
+      </tr>
+      
+      <tr>
+        <td width="30%">
+            <font style="font-size:9pt;font-family:sans-serif"> Prénom </font>
+        </td> 
+        <td width="70%">
+            <font style="font-size:9pt;font-family:sans-serif"> {!Asset.Account.FirstName}</font>
+        </td>
+      </tr>
+      
+      <tr>
+        <td width="30%">
+            <font style="font-size:9pt;font-family:sans-serif"> Adresse </font>
+        </td> 
+        <td width="70%">
+            <font style="font-size:9pt;font-family:sans-serif"> {!Asset.Account.BillingStreet}</font>
+        </td>
+      </tr>   
+      <tr>
+        <td width="30%">
+            <font style="font-size:9pt;font-family:sans-serif"> Code postal </font>
+        </td> 
+        <td width="70%">
+            <font style="font-size:9pt;font-family:sans-serif"> {!Asset.Account.BillingPostalCode}</font>
+        </td>
+      </tr> 
+        
+      <tr>
+        <td width="30%">
+            <font style="font-size:9pt;font-family:sans-serif"> Ville </font>
+        </td> 
+        <td width="70%">
+            <font style="font-size:9pt;font-family:sans-serif"> {!Asset.Account.BillingCity}</font>
+        </td>
+      </tr> 
+        
+      <tr>
+        <td width="30%">
+            <font style="font-size:9pt;font-family:sans-serif"> E-mail </font>
+        </td> 
+        <td width="70%">
+            <font style="font-size:9pt;font-family:sans-serif"> {!Asset.Account.PersonEmail}</font>
+        </td>
+      </tr> 
+        
+      <tr>
+        <td width="30%">
+            <font style="font-size:9pt;font-family:sans-serif"> Téléphone </font>
+        </td> 
+        <td width="70%">
+            <font style="font-size:9pt;font-family:sans-serif"> {!Asset.Account.PersonMobilePhone}</font>
+        </td>
+      </tr>   
+    </table>
+    <br/>
+    
+   <!-- Formule souscrite et appareils assurés Table ###############################################################################################################     -->   
+    <font style="font-weight:Bold;font-size:11pt;font-family:sans-serif;text-decoration:underline;color:#1F497D,line-height: 1px">
+    Formule souscrite et appareils assurés
+    </font>
+    <table width="100%" id="tableCustomer" class="tableCustomer" cellspacing="0" cellpadding="0">
+   
+      <tr>
+        <td width="30%">
+            <font style="font-size:9pt;font-family:sans-serif"> Formule souscrite </font>
+        </td> 
+        <td width="70%">
+            <font style="font-size:9pt;font-family:sans-serif"> {!Asset.SubscribedFormula__c}</font>
+        </td>
+      </tr>
+      
+      <tr style="vertical-align:top">
+        <td width="30%">
+            <font style="font-size:9pt;font-family:sans-serif" align="top"> Appareils assurés </font>
+        </td> 
+        <td width="70%">
+            <font style="font-size:9pt;font-family:sans-serif"> Protection des appareils relevant de (ou des) Famille(s) &nbsp; <apex:outputfield value="{!Asset.ProductCategory__c}"/>, âgés de moins de 3 ans à la date d’adhésion </font>
+        </td>
+      </tr>
+    </table>
+    <br/>
+   <!-- Date d’effet et durée de l’adhésion Table ###############################################################################################################     -->   
+    <font style="font-weight:Bold;font-size:11pt;font-family:sans-serif;text-decoration:underline;color:#1F497D,line-height: 1px">
+    Date d’effet et durée de l’adhésion
+    </font>
+    <table width="100%" id="tableCustomer" class="tableCustomer" cellspacing="0" cellpadding="0">
+   
+      <tr>
+        <td width="30%">
+            <font style="font-size:9pt;font-family:sans-serif"> Date d’effet de l’adhésion </font>
+        </td> 
+        <td width="70%">
+            <font style="font-size:9pt;font-family:sans-serif"> <apex:outputText value="{0,date,dd'/'MM'/'yyyy}">
+    <apex:param value="{!Asset.vlocity_ins__EffectiveDate__c}" /> 
+</apex:outputText> </font>
+        </td>
+      </tr>
+      
+      <tr>
+        <td width="30%">
+            <font style="font-size:9pt;font-family:sans-serif"> Délai de carence </font>
+        </td> 
+        <td width="70%">
+            <font style="font-size:9pt;font-family:sans-serif"> 30 jours à compter de la date d’effet </font>
+        </td>
+      </tr>
+        
+      <tr style="vertical-align:top">
+        <td width="30%">
+            <font style="font-size:9pt;font-family:sans-serif"> Durée de l’adhésion </font>
+        </td> 
+        <td width="70%">
+            <font style="font-size:9pt;font-family:sans-serif"> Adhésion conclue pour une durée d’un an puis renouvellement annuel par tacite reconduction</font>
+        </td>
+      </tr>  
+    </table>
+    <br/>
+    
+  
+   
+       <!-- Cotisation d’assurance Table ###############################################################################################################     -->   
+    <font style="font-weight:Bold;font-size:11pt;font-family:sans-serif;text-decoration:underline;color:#1F497D,line-height: 1px">
+    Cotisation d’assurance
+    </font>
+    <table width="100%" id="tableCustomer" class="tableCustomer" cellspacing="0" cellpadding="0">
+   
+      <tr>
+        <td width="30%">
+            <font style="font-size:9pt;font-family:sans-serif"> Cotisation mensuelle HT </font>
+        </td> 
+        <td  width="4%" align="right">
+            <font style="font-size:9pt;font-family:sans-serif"> <apex:outputfield value=" {!Asset.vlocity_ins__MonthlyPremium__c} "/> </font>
+        </td>
+         <td width="66%">
+          </td>
+      </tr>
+      
+      <tr>
+        <td width="30%">
+            <font style="font-size:9pt;font-family:sans-serif"> Frais et taxes </font>
+        </td> 
+        <td  width="4%" align="right">
+            <font style="font-size:9pt;font-family:sans-serif"> <apex:outputfield value=" {!Asset.vlocity_ins__TotalTaxAmount__c} "/> </font>
+        </td>
+        <td width="66%">
+          </td>
+      </tr>
+        
+      <tr>
+        <td width="30%">
+            <font style="font-size:9pt;font-family:sans-serif"> Cotisation mensuelle TTC </font>
+        </td> 
+       <td  width="4%" align="right">
+            <font style="font-size:9pt;font-family:sans-serif"> <apex:outputfield value="{!Asset.vlocity_ins__TotalAmount__c}"/>  </font>
+        </td>
+         <td width="66%">
+          </td>
+      </tr>  
+    </table>
+    <br/>
+    
+    <!-- Modalité de paiement de la cotisation Table ###############################################################################################################     -->   
+    <font style="font-weight:Bold;font-size:11pt;font-family:sans-serif;text-decoration:underline;color:#1F497D,line-height: 1px">
+    Modalité de paiement de la cotisation
+    </font>
+    <table width="100%" id="tableCustomer" class="tableCustomer" cellspacing="0" cellpadding="0">
+   
+      <tr>
+        <td width="30%">
+            <font style="font-size:9pt;font-family:sans-serif"> Mode de paiement </font>
+        </td> 
+        <td width="70%">
+            <font style="font-size:9pt;font-family:sans-serif"> <apex:outputfield value="{!Asset.PaymentMethod__c}"/></font>
+        </td>
+      </tr>
+      
+      <tr>
+        <td width="30%">
+            <font style="font-size:9pt;font-family:sans-serif"> Date de paiement  </font>
+        </td> 
+        <td width="70%">
+            <font style="font-size:9pt;font-family:sans-serif">{!Asset.TechPaymentDateInfo__c}</font>
+        </td>
+      </tr>
+    </table>
+  
+    
+    
+<div class="breakafter"></div>
+
+
+    <!-- Renonciation à l’adhésion Table ###############################################################################################################     -->   
+   <font style="font-weight:Bold;font-size:11pt;font-family:sans-serif;text-decoration:underline;color:#1F497D,line-height: 1px">
+    Renonciation à l’adhésion
+    </font>
+    <br/>
+      <DIV style="text-align:justify;line-height:78%">  
+      <font style="font-size:9pt;font-family:sans-serif">
+    L’Adhérent peut renoncer à son adhésion au Contrat dans les 14 (quatorze) jours calendaires suivant la date de conclusion du Contrat, par courrier ou e-mail, auprès de VERSPIEREN.<br/>
+     </font>
+      </DIV> 
+      <font style="font-size:9pt;font-family:sans-serif">
+    Modèle de lettre de renonciation : <br/> 
+     </font>
+       <DIV style="text-align:justify;line-height:78%">  
+       <font style="font-size:9pt;font-family:sans-serif">
+    « Je soussigné(e), Nom, Prénom et Adresse, déclare renoncer à mon adhésion à l'«{!Asset.Product2.Name}», Contrat n°LEKKS2.
+     </font>
+      </DIV> 
+      <font style="font-size:9pt;font-family:sans-serif">
+    Fait le Date à Lieu, Signature ».
+    </font>
+    <br/><br/>
+    <!-- Réclamation ###############################################################################################################     -->   
+    <font style="font-weight:Bold;font-size:11pt;font-family:sans-serif;text-decoration:underline;color:#1F497D,line-height: 1px">
+    Réclamation
+    </font>
+    <br/>
+     <DIV style="text-align:justify;line-height:78%">  
+    <font style="font-size:9pt;font-family:sans-serif">
+    En cas de difficultés relatives à la gestion de sa Garantie ou d’un Sinistre, l’Assuré peut adresser sa réclamation au Service
+        Réclamations du Courtier gestionnaire, qu’il est possible de saisir selon les modalités suivantes :<br/>
+       </font>
+        </DIV> 
+          <font style="font-size:9pt;font-family:sans-serif">
+&nbsp;&nbsp;&nbsp;&nbsp;- &nbsp;&nbsp;par email :<a href="mailto:reclamationdpas@verspieren.com ">  reclamationdpas@verspieren.com </a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;- &nbsp;&nbsp;par courrier : Verspieren – Service Réclamations DPAS – 1, avenue François Mitterrand - 59290 Wasquehal<br/>
+ </font>
+        <DIV style="text-align:justify;line-height:78%"> 
+  <font style="font-size:9pt;font-family:sans-serif">
+Le Service Réclamations du Courtier gestionnaire s’engage à accuser réception de la réclamation dans les 10 jours ouvrables
+suivant sa date de réception (même si la réponse à la réclamation est également apportée dans ce délai) et, en tout état de cause,
+à apporter une réponse à la réclamation au maximum dans les 2 mois suivant sa date de réception.<br/>
+ </font>
+ </DIV>
+         <DIV style="text-align:justify;line-height:78%"> 
+   <font style="font-size:9pt;font-family:sans-serif">
+En cas de rejet ou de refus de faire droit en totalité ou partiellement à la réclamation par le Service Réclamations du Courtier
+gestionnaire, l’Assuré peut alors s’adresser par écrit à l’Assureur (en mentionnant les références du dossier concerné et en joignant
+une copie des éventuelles pièces justificatives) :<br/>
+ </font>
+  </DIV>
+    <font style="font-size:9pt;font-family:sans-serif">
+&nbsp;&nbsp;&nbsp;&nbsp;- &nbsp;&nbsp;par email à : <a href="mailto:reclamations@seyna.eu"> reclamations@seyna.eu </a> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;- &nbsp;&nbsp;par courrier à : Seyna - Services réclamations - 58 rue de la Victoire 75009 Paris<br/>
+ </font>
+         <DIV style="text-align:justify;line-height:78%"> 
+   <font style="font-size:9pt;font-family:sans-serif">
+L’Assureur accusera réception de la réclamation dans les 10 jours ouvrables suivant sa date de réception et précisera le délai
+prévisible de traitement de celle-ci.<br/>
+ </font>
+  </DIV>
+          <DIV style="text-align:justify;line-height:78%"> 
+   <font style="font-size:9pt;font-family:sans-serif">
+La procédure ci-dessus ne s’applique pas si une juridiction a été saisie du litige que ce soit par l’Assuré ou par l’Assureur.<br/>
+ </font>
+  </DIV>
+            <DIV style="text-align:justify;line-height:78%"> 
+   <font style="font-size:9pt;font-family:sans-serif">
+Si le désaccord persiste après la réponse donnée par l’Assureur, l’Assuré peut solliciter l’avis du Médiateur de la Fédération
+Française de l’Assurances (F.F.A.) dont les coordonnées sont : La Médiation de l’Assurance - TSA 50110 - 75441 Paris Cedex 09.<br/>
+ </font>
+  </DIV>
+   <font style="font-size:9pt;font-family:sans-serif">
+Les dispositions du présent paragraphe s’entendent sans préjudice des autres voies d’actions légales.
+    </font>
+    <br/><br/>
+    
+    <!-- Protection des données personnelles ###############################################################################################################     -->   
+    <font style="font-weight:Bold;font-size:11pt;font-family:sans-serif;text-decoration:underline;color:#1F497D,line-height: 1px">
+    Protection des données personnelles
+    </font>
+    <br/>
+             <DIV style="text-align:justify;line-height:78%">  
+    <font style="font-size:9pt;font-family:sans-serif">
+    
+    L’Assuré est expressément informé de l’existence et déclare accepter le traitement automatisé des informations nominatives et
+personnelles recueillies auprès de lui par l’Assureur et par le Courtier gestionnaire (et leurs mandataires) dans le cadre de la
+passation, la gestion et l’exécution de la Garantie dont la gestion des réclamations, du précontentieux, du contentieux et de la
+défense de ses droits ainsi que la mise en œuvre des obligations de vigilance dans le cadre de la lutte contre le blanchiment
+d’argent et le financement du terrorisme, les mesures de gel des avoirs, la lutte contre le financement du terrorisme et les sanctions
+financières, y inclus le déclenchement d’alertes et les déclarations de suspicion et la mise en œuvre des mesures visées à la lutte
+contre la fraude à l’assurance.  </font>   </DIV>
+         <DIV style="text-align:justify;line-height:78%">  
+    <font style="font-size:9pt;font-family:sans-serif">
+Il lui est expressément rappelé que, conformément aux dispositions de la loi n° 78-17 du 06 janvier 1978 (modifiée) relative à
+l’informatique, aux fichiers et aux libertés, et au Règlement Européen (UE) 2016/679 du Parlement européen et du Conseil du 27
+avril 2016, la fourniture de ces informations est obligatoire car nécessaire à l’obtention de la garantie ainsi qu’à la gestion de
+l’adhésion. Ces informations sont destinées exclusivement à l’Assureur et au Courtier gestionnaire (et leurs mandataires) pour les
+besoins de la gestion de l’adhésion, à leurs partenaires contractuels concourant à la réalisation de cette gestion ainsi, le cas
+échéant, qu’aux Autorités de tutelle.</font>  </DIV>
+        <DIV style="text-align:justify;line-height:78%">  
+    <font style="font-size:9pt;font-family:sans-serif">
+Les données de l’Assuré seront conservées durant toute la vie du contrat, jusqu’au 31 Décembre de l’année civile suivant l’expiration
+à la fois des délais de prescription légaux et des délais prévus par les différentes obligations de conservation imposées par la réglementation.
+<br/>
+</font>
+  </DIV>
+          <DIV style="text-align:justify;line-height:78%">  
+    <font style="font-size:9pt;font-family:sans-serif">
+L’Assuré dispose d’un droit d’accès, d’opposition, de rectification, de limitation, de portabilité et de suppression des informations le
+concernant figurant dans les fichiers de l’Assureur ou du Courtier gestionnaire, dans les conditions prévues par la loi n° 78-17 du
+06 janvier 1978 (modifiée), en contactant le Courtier gestionnaire à l’adresse email suivante :  <a href="mailto:dpo@verspieren.com"> dpo@verspieren.com </a><br/>
+</font>
+  </DIV>
+           <DIV style="text-align:justify;line-height:78%">  
+    <font style="font-size:9pt;font-family:sans-serif">
+Toute déclaration fausse ou irrégulière peut faire l’objet d’un traitement spécifique destiné à prévenir ou identifier une fraude et peut
+conduire à une inscription sur une liste de personnes présentant un risque de fraude.<br/>
+</font>
+  </DIV>
+          <DIV style="text-align:justify;line-height:78%">  
+    <font style="font-size:9pt;font-family:sans-serif">
+Les conversations téléphoniques entre l’Assuré et le Courtier gestionnaire sont susceptibles d’être enregistrées à des fins de
+contrôle de la qualité des services rendus ou dans le cadre de la gestion des sinistres. Les données recueillies pour la gestion des
+sinistres peuvent être transmises, dans les conditions et modalités prévues par la législation et les autorisations obtenues auprès
+de la CNIL, aux filiales et sous-traitants du Courtier gestionnaire hors Union Européenne.<br/>
+</font>
+  </DIV>
+          <DIV style="text-align:justify;line-height:78%">  
+    <font style="font-size:9pt;font-family:sans-serif">
+L’Assuré a la possibilité de s’inscrire sur la liste d’opposition au démarchage téléphonique en se rendant sur le site www.bloctel.gouv.
+L’Assuré pourra adresser ses réclamations touchant à la collecte ou au traitement de ses données à caractère personnel au service
+du Délégué à la Protection des Données, dont les coordonnées ont été précisées ci-dessus. En cas de désaccord persistant,
+l’Assuré a la possibilité de saisir la CNIL à l’adresse suivante : <a href= "https://www.cnil.fr/fr/plaintes">https://www.cnil.fr/fr/plaintes </a>.
+        <br/>
+    </font>
+     </DIV >  
+    <br/>
+</p>
+
+</apex:page>

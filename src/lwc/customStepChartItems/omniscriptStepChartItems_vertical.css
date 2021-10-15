@@ -1,0 +1,14 @@
+.omni-stepchart-button {
+    padding: 0;
+    outline: none;
+  }
+  
+  .omni-stepchart-content {
+    padding-bottom: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  
+  .slds-progress__item .omni-stepchart-button-pristine {
+    border-color: rgb(255, 255, 255);
+    background-color: var(--lwc-colorTextButtonDefaultDisabled, rgb(217, 219, 221));
+  }
